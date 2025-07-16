@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(cors({
     origin: process.env.NODE_ENV === 'production' 
-        ? process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['https://your-frontend-domain.com']
+        ? process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ['https://envirodash.netlify.app']
         : ['http://localhost:5173', 'http://localhost:3000']
 }));
 app.use(express.json());
