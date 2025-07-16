@@ -10,7 +10,7 @@ const loadState = () => {
   try {
     const serializedState = localStorage.getItem('authState');
     return serializedState ? JSON.parse(serializedState) : undefined;
-  } catch (err) {
+  } catch {
     return undefined;
   }
 };

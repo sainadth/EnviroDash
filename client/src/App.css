@@ -42,3 +42,88 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Layout styles */
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  flex-shrink: 0;
+  padding: 1rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sensor-type-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sensor-type-toggle button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sensor-type-toggle button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.main-content.with-dashboard {
+  /* Split layout when dashboard is shown */
+}
+
+.main-content.map-only {
+  /* Full width layout when no dashboard */
+}
+
+.map-section {
+  flex: 1;
+  min-height: 0;
+}
+
+.map-section.full-width {
+  width: 100%;
+}
+
+.dashboard-section {
+  width: 50%;
+  min-width: 400px;
+  border-left: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main-content.with-dashboard {
+    flex-direction: column;
+  }
+  
+  .map-section {
+    height: 50%;
+  }
+  
+  .dashboard-section {
+    width: 100%;
+    height: 50%;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}

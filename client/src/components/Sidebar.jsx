@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FiUser, FiSettings, FiLogOut, FiChevronLeft, FiChevronRight, FiHome, FiPieChart } from 'react-icons/fi';
+import { FiUser, FiLogOut, FiChevronLeft, FiChevronRight, FiWind, FiCloud } from 'react-icons/fi';
 import { logoutUser } from '../features/auth/authThunks';
 
-const Sidebar = () => {
+const Sidebar = ({ onSensorTypeSelect }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [selectedType, setSelectedType] = useState('purpleair'); // Default to purpleair instead of 'all'
   const user = useSelector((state) => state.auth.user);
 
   const toggleSidebar = () => setIsCollapsed(!isCollapsed);
+
+  const handleSensorTypeSelect = (type) => {
+    setSelectedType(type);
+    onSensorTypeSelect?.(type);
+  };
 
   const handleLogout = async () => {
     try {
@@ -47,9 +53,21 @@ const Sidebar = () => {
 
       {/* User Controls */}
       <div className={`flex flex-col space-y-4 mt-4 ${isCollapsed && 'items-center'}`}>
-        <SidebarItem icon={<FiHome />} label="Dashboard" isCollapsed={isCollapsed} />
-        <SidebarItem icon={<FiPieChart />} label="Analytics" isCollapsed={isCollapsed} />
-        <SidebarItem icon={<FiSettings />} label="Settings" isCollapsed={isCollapsed} />
+        <SidebarItem 
+          icon={<FiCloud />} 
+          label="PurpleAir" 
+          isCollapsed={isCollapsed}
+          isActive={selectedType === 'purpleair'}
+          onClick={() => handleSensorTypeSelect('purpleair')}
+        />
+        <SidebarItem 
+          icon={<FiWind />} 
+          label="AcuRite" 
+          isCollapsed={isCollapsed}
+          isActive={selectedType === 'acurite'}
+          onClick={() => handleSensorTypeSelect('acurite')}
+        />
+        <div className="border-t border-gray-700 my-4"></div>
         <SidebarItem 
           icon={<FiLogOut />} 
           label="Logout" 
@@ -61,14 +79,14 @@ const Sidebar = () => {
   );
 };
 
-const SidebarItem = ({ icon, label, isCollapsed, onClick }) => (
+const SidebarItem = ({ icon, label, isCollapsed, onClick, isActive = false }) => (
   <div 
-    className={`flex items-center ${isCollapsed ? 'space-x-0 p-3' : 'space-x-3 p-3'} hover:bg-gray-700 cursor-pointer`}
+    className={`flex items-center ${isCollapsed ? 'space-x-0 p-3' : 'space-x-3 p-3'} 
+    ${isActive ? 'bg-blue-600' : 'hover:bg-gray-700'} cursor-pointer transition-colors duration-200`}
     onClick={onClick}
   >
     {icon}
     {!isCollapsed && <span>{label}</span>}
   </div>
 );
-
 export default Sidebar;

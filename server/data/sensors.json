@@ -1,0 +1,39 @@
+[
+    {
+        "sensor_index": 7488,
+        "name": "Rockport Texas",
+        "latitude": 28.01262,
+        "longitude": -97.09614,
+        "type": "purpleair"
+    },
+    {
+        "sensor_index": 264547,
+        "name": "Waverly Station",
+        "latitude": 27.719545,
+        "longitude": -97.341774,
+        "type": "purpleair"
+    },
+    {
+        "sensor_index": 125121,
+        "name": "North Padre Island",
+        "latitude": 27.60816,
+        "longitude": -97.20854,
+        "type": "purpleair"
+    },
+    {
+        "sensor_index": 1823425,
+        "name": "Tom's Station",
+        "latitude": 27.644931,
+        "longitude": -97.364697,
+        "type": "acurite",
+        "device_id": "24C86E120B3E-00507678-Atlas"
+    },
+    {
+        "sensor_index": 1982460,
+        "name": "Tom Station(white)",
+        "latitude": 27.644931,
+        "longitude": -97.364697,
+        "type": "acurite",
+        "device_id": "24C86E0E400D-00507678-5in1WS"
+    }
+]
