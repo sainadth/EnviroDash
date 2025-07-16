@@ -48,7 +48,7 @@ A comprehensive environmental monitoring dashboard that provides real-time data 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/EnviroDash.git
+   git clone https://github.com/sainadth/EnviroDash.git
    cd EnviroDash
    ```
 
